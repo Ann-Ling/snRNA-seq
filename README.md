@@ -11,5 +11,5 @@ These script are mainly used in our analysis, including:
 5. SCENIC analysis
 6. Pseudotime analysis
 
-Tips: If you want to use our scripts for analysis (especially SCENIC analysis), please configure the environment and modify some parameters according to your own data and environment.
+**Tips**: If you want to use our scripts for analysis (especially SCENIC analysis), please configure the environment and modify some parameters according to your own data and environment.
 
