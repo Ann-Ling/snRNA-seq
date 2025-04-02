@@ -2,8 +2,7 @@
 
 ---
 
-To investigate the relationships between gut microbioata and intestinal cell proliferation and differentiation, we analysis single-nucleus RNA sequencing data from the midgut, ileum, and rectum of Apis mellifera.
-These script are mainly used in our analysis, including:
+To investigate the relationship between gut microbiota and intestinal cell proliferation and differentiation, we analyzed single-nucleus RNA sequencing (snRNA-seq) data from the midgut, ileum, and rectum of Apis mellifera. The following scripts were primarily used in our analysis, including:
 1. Single nuclei RNA data integration and clustering.
 2. Cross-species cell type similarity analysis
 3. Statistics for cell type frequency
