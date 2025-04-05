@@ -133,4 +133,39 @@ selected_columns.to_csv("/home/liuhuiling/gut_snRNA/cross_sp_code/test/Dros.phen
 ```
 ## For the *Apis mellifera* database
 We extracted cell ordering, metadata, and gene expression count matrices from the Seurat .RDS file to enable downstream integration and analysis.
+```R
+#packages
+rm(list=ls())
+library(Seurat)
+library(future)
+library(tidyr)
+library(dplyr)
+library(patchwork)
+library(ggpubr)
+options(future.globals.maxSize=20*1024^3)
+EC<-readRDS("/data2/liuhuiling/gut_snRNA/07cell_type_group/merge/AM_seurat.RDS")
 
+#Extract metadata
+EC@meta.data <- cbind(cell = rownames(EC@meta.data), EC@meta.data)
+write.table(EC@meta.data,
+            '/data2/liuhuiling/gut_snRNA/06cross_species/AM.metadata.tsv',
+            row.names = T,quote = F,sep = '\t')
+
+#Extract counts
+EC <- JoinLayers(EC)
+counts <- GetAssayData(object = EC,assay = "RNA",layer  = "counts")
+head(counts)
+counts_new <- as.data.frame(counts)
+tail(counts_new)
+counts_new$AC_gene_id <- rownames(counts_new)
+counts_new <- counts_new[, c("AM_gene_id", setdiff(names(counts_new), "AM_gene_id"))]
+write.table(counts_new,
+            '/data2/liuhuiling/gut_snRNA/06cross_species/AM.umi.geneMatrix.txt',
+            row.names = F,col.names=T,quote = F,sep = '\t')
+
+#Extract cell information
+Sample_ID <- data.frame(Sample_ID = colnames(counts))
+write.table(Sample_ID,
+            file = "/data2/liuhuiling/gut_snRNA/06cross_species/AM.pheno.cell.txt", 
+            sep = "\t", row.names = FALSE, quote = FALSE)
+```
