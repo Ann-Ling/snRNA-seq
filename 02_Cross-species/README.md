@@ -7,3 +7,4 @@ This folder contains scripts for evaluating transcriptional similarities between
 5. Visualization
 
 # Pipeline overview
+## Step 1: Homology comparison (01)
