@@ -48,11 +48,11 @@ parse_gff <- function(gff_file) {
 gene_protein_mapping <- parse_gff(gff_file)
 
 # Output
-gene_protein_df <- data.frame(AM_Protein = names(gene_protein_mapping),AM_Gene = unlist(gene_protein_mapping))#注意修改_之前的信息
+gene_protein_df <- data.frame(AM_Protein = names(gene_protein_mapping),AM_Gene = unlist(gene_protein_mapping))
 write.csv(gene_protein_df, "/home/liuhuiling/gene_protein/AM_protein_gene_mapping.csv", row.names=FALSE)
 ```
 # Step 3
-Merge the files `AM_Dros protein comparison.csv`, `AM_protein_gene_mapping.csv`, and 'Dros_protein_gene_mapping.csv' to generate a list of homologous genes between *Drosophila melanogaster* and *Apis mellifera*.
+Merge the files `AM_Dros protein comparison.csv`, `AM_protein_gene_mapping.csv`, and `Dros_protein_gene_mapping.csv` to generate a list of homologous genes between *Drosophila melanogaster* and *Apis mellifera*.
 ```python
 #Input
 import pandas as pd
@@ -73,3 +73,5 @@ result_df.drop_duplicates(subset=["Dros_Gene"], keep="first", inplace=True)
 # Output
 result_df.to_csv("/home/liuhuiling/gene_protein/AM_Dros/AM_Dros gene result.csv", index=False)
 ```
+# Step 4
+## 
