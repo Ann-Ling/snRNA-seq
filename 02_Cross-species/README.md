@@ -33,6 +33,7 @@ To support our analysis, we performed the following steps:
 3. Generate a heatmap for visualizing.
 
 We used homologous genes in *Drosophila melanogaster* and *Apis mellifera* for `marker.list`
-Tips: This step requires two additional scripts for AUROC calculations
+
+This step requires two additional scripts for AUROC calculations:
 1. `2017-08-28-runMN-US.R`
 2. `2017-08-28-runMN-US.pearson.R`
