@@ -3,8 +3,7 @@ This folder contains scripts for evaluating transcriptional similarities between
 1. Homology comparison
 2. Data preprocessing
 3. Pseudo-cell generation
-4. Cross-species correlation analysis
-5. Visualization
+4. Cross-species correlation analysis and Visualization
 
 # Pipeline overview
 ## Step 1: Homology comparison (01Diamond.sh)
@@ -26,3 +25,14 @@ We will get:
 1. Generate pseudo-cell UMI matrices by summing the UMI counts of ten randomly selected cells per cluster.
 2. Construct metadata for pseudo-cells.
 3. Identify orthologous genes between species to create a common pseudo-cell UMI matrix.
+
+## Step 4: Cross-species correlation analysis and Visualization (04Auroc.analyais.R)
+To support our analysis, we performed the following steps:
+1. Perform z-score normalization.
+2. Compute AUROC scores to quantify transcriptional similarity.
+3. Generate a heatmap for visualizing.
+
+We used homologous genes in *Drosophila melanogaster* and *Apis mellifera* for `marker.list`
+Tips: This step requires two additional scripts for AUROC calculations
+1. `2017-08-28-runMN-US.R`
+2. `2017-08-28-runMN-US.pearson.R`
