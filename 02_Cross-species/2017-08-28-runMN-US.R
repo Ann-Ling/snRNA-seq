@@ -1,4 +1,4 @@
-run_MetaNeighbor_p<-function(vargenes, data, celltypes, pheno){
+run_MetaNeighbor_s<-function(vargenes, data, celltypes, pheno){
   
   cell.labels=matrix(0,ncol=length(celltypes),nrow=dim(pheno)[1])
   rownames(cell.labels)=colnames(data)
@@ -10,7 +10,7 @@ run_MetaNeighbor_p<-function(vargenes, data, celltypes, pheno){
   }
   
   m<-match(rownames(data),vargenes)
-  cor.dat=cor(data[!is.na(m),],method="pearson")
+  cor.dat=cor(data[!is.na(m),],method="s")
   rank.dat=cor.dat*0
   rank.dat[]=rank(cor.dat,ties.method="average",na.last = "keep")
   rank.dat[is.na(rank.dat)]=0
@@ -123,5 +123,3 @@ get_top_hits <- function(cell.NV, pheno, threshold=0.95, filename) {
   write.table(recip,file=filename,sep="\t",quote=F)
   return(recip2)
 }
-
-
