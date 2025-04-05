@@ -9,8 +9,20 @@ This folder contains scripts for evaluating transcriptional similarities between
 # Pipeline overview
 ## Step 1: Homology comparison (01Diamond.sh)
 To support our analysis, FASTA-formatted protein sequences for *Apis mellifera* and *Drosophila melanogaster* were obtained from the NCBI database.
+We will get homologous genes in *Drosophila melanogaster* and *Apis mellifera*
 
 ## Step 2: Data preprocessing (02Data preprocessing.md)
 To support our analysis, we performed the following steps:
 1. Downloaded the genome annotation file (.gff) from NCBI and extracted the corresponding relationships between protein IDs and gene IDs based on the annotation information.
 2. Extracted cell ordering, metadata, and gene expression count matrices from the Seurat .RDS file to enable downstream integration and analysis.
+
+We will get:
+1. gene expression count matrices
+2. metadata
+3. cell ordering
+
+## Step 3: Pseudo-cell generation (03Pseudo-cell generation.sh)
+We will get:
+1. Generate pseudo-cell UMI matrices by summing the UMI counts of ten randomly selected cells per cluster.
+2. Construct metadata for pseudo-cells.
+3. Identify orthologous genes between species to create a common pseudo-cell UMI matrix.
