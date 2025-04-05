@@ -7,4 +7,7 @@ This folder contains scripts for evaluating transcriptional similarities between
 5. Visualization
 
 # Pipeline overview
-## Step 1: Homology comparison (01)
+## Step 1: Homology comparison (01Diamond.sh)
+To support our analysis, FASTA-formatted protein sequences for *Apis mellifera* and *Drosophila melanogaster* were obtained from the NCBI database.
+
+## Step 2: Data preprocessing
