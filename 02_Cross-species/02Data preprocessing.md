@@ -10,7 +10,7 @@ df_extracted[3] = df.iloc[:, -1]
 df_extracted.columns = ["Dros", "Bter", "E value", "score"]
 df_extracted.to_csv("/home/liuhuiling/gene_protein/Bter_Dros/AM_Dros protein comparison.csv", index=False)
 ```
-#Step 2
+# Step 2
 Extract the corresponding gene and protein annotations from the GFF files
 ```R
 gff_file <- "/home/liuhuiling/gene_protein/GFF/Apis_mellifera_genomic.gff"
