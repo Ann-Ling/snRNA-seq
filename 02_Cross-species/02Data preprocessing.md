@@ -90,7 +90,9 @@ df = df.applymap(lambda x: str(x).replace('"', ''))
 df.to_csv("/home/liuhuiling/gut_snRNA/cross_sp_code/test/Dros.midgut.umi.geneMatrix.txt", sep="\t", header=True,index=False)
 ```
 ### Dros.pheno.cell.txt
+The first row of the expression matrix, containing the cell names, was extracted and saved as a separate column in a file. This step was performed to align the order of cells in the metadata with that in the expression matrix for subsequent analyses.
 ```python
+#Extracte cell information from expression matrix
 #Input
 import pandas as pd
 df = pd.read_csv("/home/liuhuiling/gut_snRNA/cross_sp_code/test/Dros.midgut.umi.geneMatrix.txt", delimiter="\t", header=None)
@@ -99,6 +101,35 @@ new_column = df.iloc[0, :].reset_index(drop=True)
 new_column.name = 'Sample_ID'
 #Output
 new_column.to_csv("/home/liuhuiling/gut_snRNA/cross_sp_code/test/Dros.pheno.cell.txt", sep="\t", index=False)
+
+#Extract cell and group information from metadata
+#Input metadata
+import pandas as pd
+df1=pd.read_csv("/home/liuhuiling/gut_snRNA/cross_sp_code/test/Dros.midgut.metadata.txt", delimiter=",", header=0)
+print(df1.head(10))
+df1 = df1.applymap(lambda x: str(x).replace('"', ''))
+selected_columns = df1[["cell", "celltype"]]
+selected_columns.to_csv("/home/liuhuiling/gut_snRNA/cross_sp_code/test/selected_columns.txt", sep="\t", index=False)
+#Output
+df1.to_csv("/home/liuhuiling/gut_snRNA/cross_sp_code/test/Dros.midgut.metadata.txt", sep="\t", index=False)
+
+#These files were merged to generate the final Dros.pheno.cell.txt file.
+#Input
+import os
+os.environ.clear()
+import pandas as pd
+Dros_pheno_cell=pd.read_csv("/home/liuhuiling/gut_snRNA/cross_sp_code/test/Dros.pheno.cell.txt", delimiter="\t", header=0)
+selected_columns=pd.read_csv("/home/liuhuiling/gut_snRNA/cross_sp_code/test/selected_columns.txt", delimiter="\t", header=0)
+result_df = pd.merge(Dros_pheno_cell, selected_columns, left_on="Sample_ID", right_on="cell", how="left")
+print(result_df.head(10))
+result_df.drop(columns=["cell"], inplace=True)
+result_df.columns.values[1] = "Celltype"
+result_df.insert(1, "Study_ID", "Dros")
+result_df.to_csv("/home/liuhuiling/gut_snRNA/cross_sp_code/test/Dros.pheno.cell.txt", sep="\t", index=False)
+selected_columns = df[["Sample_ID", "Study_ID","Celltype"]].copy()
+selected_columns["Celltype"] = "Dros_" + selected_columns["Celltype"].astype(str)
+#Output
+selected_columns.to_csv("/home/liuhuiling/gut_snRNA/cross_sp_code/test/Dros.pheno.cell.txt", sep="\t", index=False)
 ```
 ## For the *Apis mellifera* database
 We extracted cell ordering, metadata, and gene expression count matrices from the Seurat .RDS file to enable downstream integration and analysis.
