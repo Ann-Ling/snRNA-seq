@@ -74,8 +74,9 @@ result_df.drop_duplicates(subset=["Dros_Gene"], keep="first", inplace=True)
 result_df.to_csv("/home/liuhuiling/gene_protein/AM_Dros/AM_Dros gene result.csv", index=False)
 ```
 # Step 4
-1. For the *Drosophila melanogaster* dataset, we obtained the metadata and gene expression count matrices directly from the associated publication and performed minor formatting adjustments to prepare the data for downstream analysis.
-Gene expression count matrices
+## For the *Drosophila melanogaster* dataset
+We obtained the metadata and gene expression count matrices directly from the associated publication and performed minor formatting adjustments to prepare the data for downstream analysis.
+### Gene expression count matrices
 ```R
 #input count
 import pandas as pd
@@ -88,7 +89,7 @@ df = df.applymap(lambda x: str(x).replace('"', ''))
 #Output
 df.to_csv("/home/liuhuiling/gut_snRNA/cross_sp_code/test/Dros.midgut.umi.geneMatrix.txt", sep="\t", header=True,index=False)
 ```
-Dros.pheno.cell.txt
+### Dros.pheno.cell.txt
 ```python
 #Input
 import pandas as pd
@@ -99,5 +100,6 @@ new_column.name = 'Sample_ID'
 #Output
 new_column.to_csv("/home/liuhuiling/gut_snRNA/cross_sp_code/test/Dros.pheno.cell.txt", sep="\t", index=False)
 ```
-2. For the *Apis mellifera* database, we extracted cell ordering, metadata, and gene expression count matrices from the Seurat .RDS file to enable downstream integration and analysis.
+## For the *Apis mellifera* database
+We extracted cell ordering, metadata, and gene expression count matrices from the Seurat .RDS file to enable downstream integration and analysis.
 
