@@ -21,6 +21,8 @@ We will get:
 3. cell ordering
 
 ## Step 3: Pseudo-cell generation (03Pseudo-cell generation.sh)
+This step requires one additional scripts: `random.combine.pl`
+
 We will get:
 1. Generate pseudo-cell UMI matrices by summing the UMI counts of ten randomly selected cells per cluster.
 2. Construct metadata for pseudo-cells.
