@@ -10,7 +10,7 @@ data0 <- read.table("/data2/liuhuiling/gut_snRNA/07cell_type_group/AM_merge/03pb
 data0$group_id <- as.factor(data0$group_id)
 data0$cluster_id <- as.factor(data0$cluster_id)
 
-# Plot
+# Output
 library(ggplot2)
 data0$group_id <- factor(data0$group_id, 
                          levels = c("CV", "GF"), ordered = TRUE)
@@ -36,3 +36,6 @@ p <- ggplot(data0, aes(x = group_id, y = frequency, fill = group_id)) +
   ylab("Frequency") +  
   facet_wrap(~ cluster_id)
 p
+pdf('./cell_ratio.pdf')
+print(p)
+dev.off()
