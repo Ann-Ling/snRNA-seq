@@ -90,7 +90,7 @@ fit <- glmLRT(fit, contrast = contrast)
 #topTags(fit, n = Inf)$table %>% round(2)
 res_abund <- topTags(fit, n = Inf)$table %>%
   dplyr::mutate(cluster_id = rownames(.))
-res_abund$group <- paste0(levels(ei$group_id)[1],'-',levels(ei$group_id)[2])#注意修改数字
+res_abund$group <- paste0(levels(ei$group_id)[1],'-',levels(ei$group_id)[2])
 
 #output
 #abundance
