@@ -24,7 +24,7 @@ marker_condition=data.frame()
 Idents(testseu)="celltype_condition"
 for ( ci in sort(as.character(unique(testseu@meta.data$integrated_snn_res.0.3))) ) {
   tmp.marker <- FindMarkers(
-    testseu, logfc.threshold = 0, min.pct = 0.1, #logfc不筛选
+    testseu, logfc.threshold = 0, min.pct = 0.1,
     only.pos = F, test.use = "wilcox",
     ident.1=paste0(ci,"_CV"),ident.2=paste0(ci,"_GF")
   )
@@ -33,7 +33,7 @@ for ( ci in sort(as.character(unique(testseu@meta.data$integrated_snn_res.0.3)))
   tmp.marker$condition=ifelse(tmp.marker$avg_log2FC > 0,paste0(ci,"_CV"),paste0(ci,"_GF"))
   tmp.marker$cluster=ci
   
-  #tmp.marker=tmp.marker%>%filter(p_val_adj < 0.01) #p_val_adj值不筛选
+  #tmp.marker=tmp.marker%>%filter(p_val_adj < 0.01)
   tmp.marker=as.data.frame(tmp.marker)
   tmp.marker=tmp.marker%>%arrange(desc(avg_log2FC))
   
