@@ -1,3 +1,4 @@
+#Volcano-ggplot2
 #Package
 library(ggplot2)
 library(tidyverse)
@@ -93,4 +94,69 @@ p6
 pdf('./DEG_volcano.pdf',width = 10,height = 8)
 print(p6)
 dev.off()
+###############################
+#Volcano-EnhancedVolcano
+#package
+library(EnhancedVolcano)
+library(Seurat);cat("Seurat:",as.character(packageVersion("Seurat")),"\n")
+library(tidyverse)
+library(ggrepel)
+library(patchwork)
 
+#Environment
+rm(list=ls())
+
+#Input
+res <- read.table("/data2/liuhuiling/gut_snRNA/07cell_type_group/AM_merge/ileum/DEG/markers.BasedOncondition.txt",header = T)
+log2FC_cutoff <- 1.0 
+pval_cutoff <- 0.05  
+res$color <- ifelse(res$avg_log2FC > log2FC_cutoff & res$p_val < pval_cutoff, 
+                    "Upregulated", 
+                    ifelse(res$avg_log2FC < -log2FC_cutoff & res$p_val < pval_cutoff, 
+                           "Downregulated", 
+                           "Stable"))
+
+ISC <- subset(res,cluster=="ISC/EB")
+keyvals_ISC <- ifelse(
+  ISC$avg_log2FC> 1 & ISC$p_val < 0.05, "red",  
+  ifelse(
+    ISC$avg_log2FC < -1 & ISC$p_val < 0.05, "royalblue",  
+    "grey"  
+  )
+)
+
+names(keyvals_ISC) <- ifelse(
+  ISC$avg_log2FC > 1 & ISC$p_val < 0.05, "Upregulated",  
+  ifelse(
+    ISC$avg_log2FC < -1 & ISC$p_val < 0.05, "Downregulated",  
+    "Stable"  
+  )
+)
+
+#Plot
+p1 <- EnhancedVolcano(ISC,
+                      lab =ISC$gene,
+                      x = 'avg_log2FC',
+                      y = 'p_val',
+                      selectLab = c('LOC408924','Imd',"LOC413809","LOC726947","LOC726760",
+                                    "LOC724728","LOC100577690","LOC724930","LOC552247",
+                                    "LOC409125","LOC551970","LOC409286","LOC100577393",
+                                    "LOC408533","LOC408996","LOC413289"),
+                      title = 'ISC/EB CV vs GF',
+                      pCutoff = 0.05,
+                      FCcutoff = 1,
+                      pointSize = 3.0,
+                      labSize = 3.0,
+                      labCol = 'black',
+                      labFace = 'bold',
+                      boxedLabels = TRUE,
+                      colAlpha = 4/5,
+                      legendPosition = 'none',
+                      colCustom = keyvals_ISC,
+                      drawConnectors = TRUE,
+                      widthConnectors = 1.0,
+                      max.overlaps = Inf)
+p1
+pdf('/data2/liuhuiling/gut_snRNA/07cell_type_group/AM_merge/ileum/DEG/cell type volcano.pdf',width = 18,height = 18)
+print(p1)
+dev.off()
