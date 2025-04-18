@@ -17,6 +17,6 @@ This step is used to extract data from the .RDS file and convert it into .loom f
 
 ## Step3: SCENIC
 To successfully complete this step：
-1. You need to install pySCENIC in advance. Refer to https://pyscenic.readthedocs.io/en/latest/index.html
-2.  According to your own data, follow the tutorial ([pySCENIC](https://pyscenic.readthedocs.io/en/latest/index.html)) or run `03SCENIC.R`
+1. You need to install pySCENIC in advance. Refer to [pySCENIC](https://pyscenic.readthedocs.io/en/latest/index.html)
+2.  According to your own data, follow the tutorial [pySCENIC](https://pyscenic.readthedocs.io/en/latest/index.html) or run `03SCENIC.R`
 
