@@ -18,11 +18,11 @@ testseu <- JoinLayers(testseu)
 head(testseu)
 
 #Find different expression genes
-testseu@meta.data$celltype_condition=paste(testseu@meta.data$integrated_snn_res.0.3,testseu@meta.data$orig.ident,sep = "_")
+testseu@meta.data$celltype_condition=paste(testseu@meta.data$cell_type,testseu@meta.data$orig.ident,sep = "_")
 
 marker_condition=data.frame()
 Idents(testseu)="celltype_condition"
-for ( ci in sort(as.character(unique(testseu@meta.data$integrated_snn_res.0.3))) ) {
+for ( ci in sort(as.character(unique(testseu@meta.data$cell_type))) ) {
   tmp.marker <- FindMarkers(
     testseu, logfc.threshold = 0, min.pct = 0.1,
     only.pos = F, test.use = "wilcox",
