@@ -2,7 +2,8 @@
 cd /data2/liuhuiling/gut_snRNA/10SCENIC/02ileum
 pyscenic grn --num_workers 10 --output grn.tsv --method grnboost2 ileum_scenic.loom TF_list.txt
 
-nohup pyscenic grn --num_workers 6 --output grn.tsv --method grnboost2 ileum_scenic.loom TF_list.txt > pyscenic_output.log 2>&1 &
+#It takes a long time and can be run in the background
+#nohup pyscenic grn --num_workers 6 --output grn.tsv --method grnboost2 ileum_scenic.loom TF_list.txt > pyscenic_output.log 2>&1 &
 
 # step2 ctx
 pyscenic ctx \
