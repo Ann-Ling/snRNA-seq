@@ -12,3 +12,6 @@ To support our analysis, we need to prepare the following documents:
 1. The genome annotation file (.gtf) of *A. mellifera*
 2. Motifs in Cluster-Buster format
 3. File with motif IDs
+
+## Step2: Formatting input
+This step is used to extract data from the .RDS file and convert it into .loom file format
