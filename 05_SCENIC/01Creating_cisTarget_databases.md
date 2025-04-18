@@ -32,3 +32,24 @@ awk 'BEGIN{FS=OFS="\t"}{
     }
 }' tss.bed > gene_region.bed
 ```
+
+# Start building database
+```shell
+create_cistarget_databases_dir=/data2/liuhuiling/create_cisTarget_databases
+# FASTA file with sequences per region IDs / gene IDs.
+fasta_filename=/data2/liuhuiling/SCENIC_preperation/Creating_cisTarget_motif_databases/gene_region.fasta
+# Directory with motifs in Cluster-Buster format.
+motifs_dir=/data2/liuhuiling/SCENIC_preperation/Creating_cisTarget_motif_databases/motif_cb
+# File with motif IDs (base name of motif file in ${motifs_dir}).
+motifs_list_filename=/data2/liuhuiling/SCENIC_preperation/Creating_cisTarget_motif_databases/motif_cb_name_list.txt
+# cisTarget motif database output prefix.
+db_prefix=motifs
+nbr_threads=15
+
+"${create_cistarget_databases_dir}/create_cistarget_motif_databases.py" \
+    -f "${fasta_filename}" \
+    -M "${motifs_dir}" \
+    -m "${motifs_list_filename}" \
+    -o "${db_prefix}" \
+    -t "${nbr_threads}"
+```
