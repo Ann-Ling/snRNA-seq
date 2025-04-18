@@ -3,7 +3,6 @@ To elucidate how Relish influences transcriptional programs in ISC/EBs, we const
 1. Creating cisTarget databases
 2. Formatting input
 3. SCENIC
-4. Visualization
 
 # Pipeline overview
 ## Step 1: Creating cisTarget databases
