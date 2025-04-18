@@ -7,3 +7,8 @@ To elucidate how Relish influences transcriptional programs in ISC/EBs, we const
 
 # Pipeline overview
 ## Step 1: Creating cisTarget databases
+Since single-cell regulatory network inference and clustering (SCENIC) does not provide pre-built motif databases for *A. mellifera*, we first constructed the motif databases for cisTarget and SCENIC analyses specific to this species.
+To support our analysis, we need to prepare the following documents:
+1. The genome annotation file (.gtf) of *A. mellifera*
+2. Motifs in Cluster-Buster format
+3. File with motif IDs
