@@ -19,4 +19,4 @@ Extracts data from a `.RDS` object and exports it as a `.loom` file for compatib
 ## Step3: SCENIC
 To complete this step：
 1. Ensure that pySCENIC is installed in advance. For installation and usage, refer to the official pySCENIC tutorial [pySCENIC](https://pyscenic.readthedocs.io/en/latest/index.html).
-2. Depending on your data and workflow preference, you may either follow the standard pySCENIC pipeline [pySCENIC](https://pyscenic.readthedocs.io/en/latest/index.html) or execute the analysis using `03SCENIC.R`.
+2. Depending on your data and workflow preference, you may either follow the standard pySCENIC pipeline [pySCENIC](https://pyscenic.readthedocs.io/en/latest/index.html) or execute the analysis using `03SCENIC.sh`.
