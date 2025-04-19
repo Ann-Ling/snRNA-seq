@@ -57,4 +57,20 @@ mycds <- orderCells(mycds, root_state = GM_state(mycds))
 #Save
 saveRDS(mycds, file = "/data2/liuhuiling/gut_snRNA/09pseudotime/ileum/ileum_monocle.RDS")
 
+#Visualization
+#Plot by Pseudotime
+p2 <- plot_cell_trajectory(mycds,color_by="Pseudotime",show_backbone=TRUE)
+p2
+pdf("/data2/liuhuiling/gut_snRNA/09pseudotime/ileum/ileum_pseudotime_monocle.pdf",width = 10,height=10)
+print(p2)
+dev.off()
 
+#Plot by cell type
+colour <- c("ISC/EB" = "#248067","EE" = "#61649f","EC" = "#f28e16")
+p3 <- plot_cell_trajectory(mycds,color_by="sub_cell_type",show_backbone=TRUE)+
+  scale_color_manual(values=colour)+
+  theme(legend.position = "right")
+p3
+pdf("/data2/liuhuiling/gut_snRNA/09pseudotime/ileum/ileum_celltype_monocle.pdf",width = 10,height=8)
+print(p3)
+dev.off()
