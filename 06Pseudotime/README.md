@@ -1,1 +1,3 @@
-
+To assess the impact of gut microbiota on ISC/EBs differentiation in the ileum, we reconstructed the developmental trajectories of the gut stem cells via the pseudo-time analysis. To infer cell lineage, we excluded VMs, which are unlikely to be directly related to the ISC/EBs lineage.
+1. `01Pseudotime.R`: We perform Pseudotime analysis on our snRMA-seq data using monocle pipline and visualize the differentiation trajectory, more details seeing in the script.
+2. `02Cell_ratio.R`: We calculated the proportion of each cell type within individual trajectory branches under both CV and GF conditions, more details seeing in the script.
