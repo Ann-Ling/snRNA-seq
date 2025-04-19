@@ -62,7 +62,7 @@ print("Files in Directory:", os.listdir(os.getcwd()))
 # Reading CSV Files
 x = sc.read_csv("ileum_scenic_counts_t.csv")  
 
-# 创建 row_attrs 和 col_attrs
+# row_attrs 和 col_attrs
 row_attrs = {"Gene": np.array(x.var_names)}  # Genes as rows
 col_attrs = {"CellID": np.array(x.obs_names)}  # Cells as columns
 
