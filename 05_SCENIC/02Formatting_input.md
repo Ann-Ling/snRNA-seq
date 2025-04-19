@@ -1,5 +1,5 @@
 # Data extraction
-## SCENIC_annotation.tx
+## SCENIC_annotation.txt
 ```txt
 ISC/EB
 EE
