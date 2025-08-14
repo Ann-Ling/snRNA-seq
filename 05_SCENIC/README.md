@@ -1,6 +1,6 @@
 # Introduction
 To elucidate how Relish influences transcriptional programs in ISC/EBs, we constructed a SCENIC database for *A. mellifera* and predicted GRN based on coexpression and motif enrichment.
-The analysis involved three key steps:
+The analysis involved four key steps:
 1. Creating cisTarget databases
 2. Formatting input
 3. SCENIC
