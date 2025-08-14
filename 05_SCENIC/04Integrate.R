@@ -18,7 +18,6 @@ library(circlize)
 
 #input
 setwd("/data2/liuhuiling/gut_snRNA/10SCENIC/02ileum") 
-setwd("/data2/liuhuiling/gut_snRNA/10SCENIC/02ileum")  
 
 #load data  
 loom <- open_loom('aucell.loom')  
